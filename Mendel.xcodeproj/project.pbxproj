@@ -21,6 +21,7 @@
 		3D5B0B8AE5234486BECB4FE8 /* Colors.md in Resources */ = {isa = PBXBuildFile; fileRef = F9B3029A97988BDDA80BFA2B /* Colors.md */; };
 		4095DC51C20436832A72C23D /* DecisionEngine+HealthKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365BEE44ED4272D16BAA1A85 /* DecisionEngine+HealthKit.swift */; };
 		4704FB8D98BE2AA35E4646CF /* WidgetSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E5EEC7168F67E149F2F4EB /* WidgetSync.swift */; };
+		A1B2C3D4E5F60718293A4B5C /* WidgetSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E5EEC7168F67E149F2F4EB /* WidgetSync.swift */; };
 		471DA599FDCD052B5F6F1F40 /* NotificationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0A140819A97672FFB8D069 /* NotificationDelegate.swift */; };
 		57FCBA3A3C8DBCD11AC2CDF6 /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43853F439D4FFA109173781 /* TodayView.swift */; };
 		7D5A975C6CAEC33CE8969F0A /* MendelWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 79381C05D19893E625A1BB20 /* MendelWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -363,6 +364,7 @@
 				355A5F226DAB924D85ECBABA /* MendelWidget.swift in Sources */,
 				B11ED3492F0C89264742BB45 /* MendelWidgetViews.swift in Sources */,
 				166C79E36DC17E867612A2F3 /* SharedRecommendation.swift in Sources */,
+				A1B2C3D4E5F60718293A4B5C /* WidgetSync.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
