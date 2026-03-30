@@ -1,0 +1,652 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		03A437596FB10F40B79EB91A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7C4BE21A558CBD6026DBAC9 /* Assets.xcassets */; };
+		10A89D6A4DF4AEDF59582C70 /* DesignSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7361973666328C133337157 /* DesignSystem.swift */; };
+		166C79E36DC17E867612A2F3 /* SharedRecommendation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD95EE0E82B6F93F1A77B8A /* SharedRecommendation.swift */; };
+		1E357AF0906F76917EE18F95 /* MendelApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1483715F31D750F7DDA032 /* MendelApp.swift */; };
+		1E735EF28F60841E74CE4186 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E8DD4AD65C6A31E01367E4 /* RootView.swift */; };
+		28D44E8668203C3E56E8DC15 /* NotificationSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C536C96DA1114CC070370D /* NotificationSettingsView.swift */; };
+		2CF28D95640DC044FE8EACD3 /* DecisionEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501CCB4DDB83935924C5DB6B /* DecisionEngine.swift */; };
+		3073A9FF718642D19B2C7F06 /* PaywallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A229DD798B63C4A322F7934 /* PaywallView.swift */; };
+		355A5F226DAB924D85ECBABA /* MendelWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D146B0AB8CDFB346BD9EFD /* MendelWidget.swift */; };
+		3B0A2D99E8C5F793D60B53B7 /* PurchaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0332228788D8F620770B2600 /* PurchaseManager.swift */; };
+		3CF210BAD4E7921FF894A3D2 /* HealthKitViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63A670A397F5FB9353F23E0 /* HealthKitViews.swift */; };
+		3D5B0B8AE5234486BECB4FE8 /* Colors.md in Resources */ = {isa = PBXBuildFile; fileRef = F9B3029A97988BDDA80BFA2B /* Colors.md */; };
+		4095DC51C20436832A72C23D /* DecisionEngine+HealthKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365BEE44ED4272D16BAA1A85 /* DecisionEngine+HealthKit.swift */; };
+		4704FB8D98BE2AA35E4646CF /* WidgetSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E5EEC7168F67E149F2F4EB /* WidgetSync.swift */; };
+		471DA599FDCD052B5F6F1F40 /* NotificationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0A140819A97672FFB8D069 /* NotificationDelegate.swift */; };
+		57FCBA3A3C8DBCD11AC2CDF6 /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43853F439D4FFA109173781 /* TodayView.swift */; };
+		7D5A975C6CAEC33CE8969F0A /* MendelWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 79381C05D19893E625A1BB20 /* MendelWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		89696E08E22DB2693B2E8DA7 /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CD0A43E64BF232F2E5835D /* HealthKitManager.swift */; };
+		91F37C0230151876BE8A52C6 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8296915250A8EF36D0E80B /* AppState.swift */; };
+		A28D8213A49ED909CEFBFF53 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993141E1D77F0FD6B7DEC006 /* Models.swift */; };
+		AE92AA93FDC58E6FDB1EC35F /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = B584BFA961735A06D3383664 /* Components.swift */; };
+		AEF2A857F5674E1766EC0C37 /* ClaudeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D2E22604A811C08DA3C1DD /* ClaudeService.swift */; };
+		B11ED3492F0C89264742BB45 /* MendelWidgetViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7029B36AB8C2CAB9811DE64F /* MendelWidgetViews.swift */; };
+		B1955E63AE9F7B6B89177EDB /* WeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5269A4296C686D77EEAB9B7 /* WeekView.swift */; };
+		CB76392A0E5E5572FB85E1AB /* DeepLinkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64FB130A59E71442C8762FE /* DeepLinkHandler.swift */; };
+		DDED83A52C94D03D4EE4F902 /* MendelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6550B8E84B987BC1533E12 /* MendelProvider.swift */; };
+		DE0C963E90303F0DB0216DB3 /* LogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0DE4357E0AB69B444A3FDB /* LogView.swift */; };
+		E5645D770363AC79BD54C5A6 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B62C17B77F14F46B8D99F39 /* NotificationManager.swift */; };
+		E7803390FCEA986973D51872 /* SharedRecommendation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD95EE0E82B6F93F1A77B8A /* SharedRecommendation.swift */; };
+		FEC7900011D00CBCB90CB777 /* CoachView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDE1A8ECFE94650DA908083 /* CoachView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2436415C2C65B8DA45ED95D5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9A9394C96F042DD39A86404 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 00053F034F5E9508C075F09A;
+			remoteInfo = MendelWidget;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BE3CFECD286161FB5E5EE8D9 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				7D5A975C6CAEC33CE8969F0A /* MendelWidget.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		0332228788D8F620770B2600 /* PurchaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseManager.swift; sourceTree = "<group>"; };
+		0A229DD798B63C4A322F7934 /* PaywallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallView.swift; sourceTree = "<group>"; };
+		0B62C17B77F14F46B8D99F39 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		1E0DE4357E0AB69B444A3FDB /* LogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogView.swift; sourceTree = "<group>"; };
+		23E8DD4AD65C6A31E01367E4 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		365BEE44ED4272D16BAA1A85 /* DecisionEngine+HealthKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DecisionEngine+HealthKit.swift"; sourceTree = "<group>"; };
+		3B1483715F31D750F7DDA032 /* MendelApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MendelApp.swift; sourceTree = "<group>"; };
+		501CCB4DDB83935924C5DB6B /* DecisionEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecisionEngine.swift; sourceTree = "<group>"; };
+		67E5EEC7168F67E149F2F4EB /* WidgetSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetSync.swift; sourceTree = "<group>"; };
+		68CD0A43E64BF232F2E5835D /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
+		7029B36AB8C2CAB9811DE64F /* MendelWidgetViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MendelWidgetViews.swift; sourceTree = "<group>"; };
+		79381C05D19893E625A1BB20 /* MendelWidget.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = MendelWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		7BAF9013317CB9D84E5A1558 /* Mendel.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Mendel.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		97D146B0AB8CDFB346BD9EFD /* MendelWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MendelWidget.swift; sourceTree = "<group>"; };
+		993141E1D77F0FD6B7DEC006 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		9AD95EE0E82B6F93F1A77B8A /* SharedRecommendation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedRecommendation.swift; sourceTree = "<group>"; };
+		A5269A4296C686D77EEAB9B7 /* WeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekView.swift; sourceTree = "<group>"; };
+		A7C4BE21A558CBD6026DBAC9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B584BFA961735A06D3383664 /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
+		B63A670A397F5FB9353F23E0 /* HealthKitViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitViews.swift; sourceTree = "<group>"; };
+		C43853F439D4FFA109173781 /* TodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>"; };
+		CE6550B8E84B987BC1533E12 /* MendelProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MendelProvider.swift; sourceTree = "<group>"; };
+		CE8296915250A8EF36D0E80B /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		D64FB130A59E71442C8762FE /* DeepLinkHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkHandler.swift; sourceTree = "<group>"; };
+		DBDE1A8ECFE94650DA908083 /* CoachView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoachView.swift; sourceTree = "<group>"; };
+		E8D2E22604A811C08DA3C1DD /* ClaudeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaudeService.swift; sourceTree = "<group>"; };
+		E9C536C96DA1114CC070370D /* NotificationSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingsView.swift; sourceTree = "<group>"; };
+		F7361973666328C133337157 /* DesignSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignSystem.swift; sourceTree = "<group>"; };
+		F9B3029A97988BDDA80BFA2B /* Colors.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Colors.md; sourceTree = "<group>"; };
+		FF0A140819A97672FFB8D069 /* NotificationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationDelegate.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		0A1CAC3C87DA981C0BE1D8F4 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F9B3029A97988BDDA80BFA2B /* Colors.md */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		2BFE7DD3CEF3D7B7A47FCE26 = {
+			isa = PBXGroup;
+			children = (
+				A7C4BE21A558CBD6026DBAC9 /* Assets.xcassets */,
+				F5289888E2641A1E095DE7CA /* Mendel */,
+				C451C14ABC9AB8F931E15020 /* MendelWidget */,
+				59AC1EDCC15DCAF082FEF84E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		45D6D9110FA4A3B48D2EA96E /* Engine */ = {
+			isa = PBXGroup;
+			children = (
+				501CCB4DDB83935924C5DB6B /* DecisionEngine.swift */,
+				365BEE44ED4272D16BAA1A85 /* DecisionEngine+HealthKit.swift */,
+			);
+			path = Engine;
+			sourceTree = "<group>";
+		};
+		45DCC8BCBD1573ACA2D12649 /* Log */ = {
+			isa = PBXGroup;
+			children = (
+				1E0DE4357E0AB69B444A3FDB /* LogView.swift */,
+			);
+			path = Log;
+			sourceTree = "<group>";
+		};
+		57CF746A1FC15F3EC2B3B6B6 /* Today */ = {
+			isa = PBXGroup;
+			children = (
+				C43853F439D4FFA109173781 /* TodayView.swift */,
+			);
+			path = Today;
+			sourceTree = "<group>";
+		};
+		59AC1EDCC15DCAF082FEF84E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7BAF9013317CB9D84E5A1558 /* Mendel.app */,
+				79381C05D19893E625A1BB20 /* MendelWidget.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		63173989B1959E31E46F73B8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				23E8DD4AD65C6A31E01367E4 /* RootView.swift */,
+				A47AA1F146D0E162D7673F8D /* Coach */,
+				66D5B5FEF2E25B1D8D2FE3DF /* Components */,
+				45DCC8BCBD1573ACA2D12649 /* Log */,
+				57CF746A1FC15F3EC2B3B6B6 /* Today */,
+				7BD2120C91339DBFD08109BD /* Week */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		66D5B5FEF2E25B1D8D2FE3DF /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				B584BFA961735A06D3383664 /* Components.swift */,
+				F7361973666328C133337157 /* DesignSystem.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		6F163C2DAAB9C2027806CE47 /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				FF0A140819A97672FFB8D069 /* NotificationDelegate.swift */,
+				0B62C17B77F14F46B8D99F39 /* NotificationManager.swift */,
+				E9C536C96DA1114CC070370D /* NotificationSettingsView.swift */,
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
+		702CCF351C7809307EA6FB1A /* Paywall */ = {
+			isa = PBXGroup;
+			children = (
+				0A229DD798B63C4A322F7934 /* PaywallView.swift */,
+				0332228788D8F620770B2600 /* PurchaseManager.swift */,
+			);
+			path = Paywall;
+			sourceTree = "<group>";
+		};
+		734AD2A9CC8D8A3B5BF28D63 /* HealthKit */ = {
+			isa = PBXGroup;
+			children = (
+				68CD0A43E64BF232F2E5835D /* HealthKitManager.swift */,
+				B63A670A397F5FB9353F23E0 /* HealthKitViews.swift */,
+			);
+			path = HealthKit;
+			sourceTree = "<group>";
+		};
+		7BD2120C91339DBFD08109BD /* Week */ = {
+			isa = PBXGroup;
+			children = (
+				A5269A4296C686D77EEAB9B7 /* WeekView.swift */,
+			);
+			path = Week;
+			sourceTree = "<group>";
+		};
+		925C40580ADCE77888793B83 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CE8296915250A8EF36D0E80B /* AppState.swift */,
+				993141E1D77F0FD6B7DEC006 /* Models.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A47AA1F146D0E162D7673F8D /* Coach */ = {
+			isa = PBXGroup;
+			children = (
+				DBDE1A8ECFE94650DA908083 /* CoachView.swift */,
+			);
+			path = Coach;
+			sourceTree = "<group>";
+		};
+		AF18140D90C017D06276D743 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				D64FB130A59E71442C8762FE /* DeepLinkHandler.swift */,
+				9AD95EE0E82B6F93F1A77B8A /* SharedRecommendation.swift */,
+				67E5EEC7168F67E149F2F4EB /* WidgetSync.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		C451C14ABC9AB8F931E15020 /* MendelWidget */ = {
+			isa = PBXGroup;
+			children = (
+				CE6550B8E84B987BC1533E12 /* MendelProvider.swift */,
+				97D146B0AB8CDFB346BD9EFD /* MendelWidget.swift */,
+				7029B36AB8C2CAB9811DE64F /* MendelWidgetViews.swift */,
+			);
+			name = MendelWidget;
+			path = Mendel/MendelWidget;
+			sourceTree = "<group>";
+		};
+		CAABF7FFF6242AC0C4A69B91 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				E8D2E22604A811C08DA3C1DD /* ClaudeService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		F5289888E2641A1E095DE7CA /* Mendel */ = {
+			isa = PBXGroup;
+			children = (
+				3B1483715F31D750F7DDA032 /* MendelApp.swift */,
+				45D6D9110FA4A3B48D2EA96E /* Engine */,
+				734AD2A9CC8D8A3B5BF28D63 /* HealthKit */,
+				925C40580ADCE77888793B83 /* Models */,
+				6F163C2DAAB9C2027806CE47 /* Notifications */,
+				702CCF351C7809307EA6FB1A /* Paywall */,
+				0A1CAC3C87DA981C0BE1D8F4 /* Resources */,
+				CAABF7FFF6242AC0C4A69B91 /* Services */,
+				AF18140D90C017D06276D743 /* Shared */,
+				63173989B1959E31E46F73B8 /* Views */,
+			);
+			name = Mendel;
+			path = Mendel/Mendel;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		00053F034F5E9508C075F09A /* MendelWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EF7BBB18677AA6DFC9753C6E /* Build configuration list for PBXNativeTarget "MendelWidget" */;
+			buildPhases = (
+				508F900019033016AEBF02DA /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MendelWidget;
+			packageProductDependencies = (
+			);
+			productName = MendelWidget;
+			productReference = 79381C05D19893E625A1BB20 /* MendelWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		5D1B839B812EADF0C08B77A8 /* Mendel */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2915680F80B6A8520573E805 /* Build configuration list for PBXNativeTarget "Mendel" */;
+			buildPhases = (
+				CC10C53DC9A15A945286534B /* Sources */,
+				447C3509694A8ED6C6A445FC /* Resources */,
+				BE3CFECD286161FB5E5EE8D9 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E2079C4EBCEEB2DB487DAFF6 /* PBXTargetDependency */,
+			);
+			name = Mendel;
+			packageProductDependencies = (
+			);
+			productName = Mendel;
+			productReference = 7BAF9013317CB9D84E5A1558 /* Mendel.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B9A9394C96F042DD39A86404 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+				};
+			};
+			buildConfigurationList = 5B573ABC055F0CA9C1020602 /* Build configuration list for PBXProject "Mendel" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 2BFE7DD3CEF3D7B7A47FCE26;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 59AC1EDCC15DCAF082FEF84E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5D1B839B812EADF0C08B77A8 /* Mendel */,
+				00053F034F5E9508C075F09A /* MendelWidget */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		447C3509694A8ED6C6A445FC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03A437596FB10F40B79EB91A /* Assets.xcassets in Resources */,
+				3D5B0B8AE5234486BECB4FE8 /* Colors.md in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		508F900019033016AEBF02DA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DDED83A52C94D03D4EE4F902 /* MendelProvider.swift in Sources */,
+				355A5F226DAB924D85ECBABA /* MendelWidget.swift in Sources */,
+				B11ED3492F0C89264742BB45 /* MendelWidgetViews.swift in Sources */,
+				166C79E36DC17E867612A2F3 /* SharedRecommendation.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CC10C53DC9A15A945286534B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				91F37C0230151876BE8A52C6 /* AppState.swift in Sources */,
+				AEF2A857F5674E1766EC0C37 /* ClaudeService.swift in Sources */,
+				FEC7900011D00CBCB90CB777 /* CoachView.swift in Sources */,
+				AE92AA93FDC58E6FDB1EC35F /* Components.swift in Sources */,
+				4095DC51C20436832A72C23D /* DecisionEngine+HealthKit.swift in Sources */,
+				2CF28D95640DC044FE8EACD3 /* DecisionEngine.swift in Sources */,
+				CB76392A0E5E5572FB85E1AB /* DeepLinkHandler.swift in Sources */,
+				10A89D6A4DF4AEDF59582C70 /* DesignSystem.swift in Sources */,
+				89696E08E22DB2693B2E8DA7 /* HealthKitManager.swift in Sources */,
+				3CF210BAD4E7921FF894A3D2 /* HealthKitViews.swift in Sources */,
+				DE0C963E90303F0DB0216DB3 /* LogView.swift in Sources */,
+				1E357AF0906F76917EE18F95 /* MendelApp.swift in Sources */,
+				A28D8213A49ED909CEFBFF53 /* Models.swift in Sources */,
+				471DA599FDCD052B5F6F1F40 /* NotificationDelegate.swift in Sources */,
+				E5645D770363AC79BD54C5A6 /* NotificationManager.swift in Sources */,
+				28D44E8668203C3E56E8DC15 /* NotificationSettingsView.swift in Sources */,
+				3073A9FF718642D19B2C7F06 /* PaywallView.swift in Sources */,
+				3B0A2D99E8C5F793D60B53B7 /* PurchaseManager.swift in Sources */,
+				1E735EF28F60841E74CE4186 /* RootView.swift in Sources */,
+				E7803390FCEA986973D51872 /* SharedRecommendation.swift in Sources */,
+				57FCBA3A3C8DBCD11AC2CDF6 /* TodayView.swift in Sources */,
+				B1955E63AE9F7B6B89177EDB /* WeekView.swift in Sources */,
+				4704FB8D98BE2AA35E4646CF /* WidgetSync.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E2079C4EBCEEB2DB487DAFF6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 00053F034F5E9508C075F09A /* MendelWidget */;
+			targetProxy = 2436415C2C65B8DA45ED95D5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1D3616C7E94B3EB8A8A1E029 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_ENTITLEMENTS = Mendel/Config/MendelWidget.entitlements;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "Mendel/Config/MendelWidget-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.dipworks.mendel.widget;
+				PRODUCT_NAME = MendelWidget;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2147963A0244A0BA8D614CE0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_ENTITLEMENTS = Mendel/Config/MendelWidget.entitlements;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "Mendel/Config/MendelWidget-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.dipworks.mendel.widget;
+				PRODUCT_NAME = MendelWidget;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		6BDC91DB092D69F48E0E17B5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Mendel/Config/Mendel.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_ASSET_PATHS = "\"Mendel/Preview Content\"";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Mendel/Config/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.dipworks.mendel;
+				PRODUCT_NAME = Mendel;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		B2DC4B6D73492838A2E2BFDF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dipworks.mendel;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		EE58519C94C17DA8E0346A87 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Mendel/Config/Mendel.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_ASSET_PATHS = "\"Mendel/Preview Content\"";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Mendel/Config/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.dipworks.mendel;
+				PRODUCT_NAME = Mendel;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F5AF25C8289E222632413A6D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dipworks.mendel;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2915680F80B6A8520573E805 /* Build configuration list for PBXNativeTarget "Mendel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EE58519C94C17DA8E0346A87 /* Debug */,
+				6BDC91DB092D69F48E0E17B5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		5B573ABC055F0CA9C1020602 /* Build configuration list for PBXProject "Mendel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F5AF25C8289E222632413A6D /* Debug */,
+				B2DC4B6D73492838A2E2BFDF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		EF7BBB18677AA6DFC9753C6E /* Build configuration list for PBXNativeTarget "MendelWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D3616C7E94B3EB8A8A1E029 /* Debug */,
+				2147963A0244A0BA8D614CE0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B9A9394C96F042DD39A86404 /* Project object */;
+}
