@@ -17,12 +17,10 @@ targets:
     platform: iOS
     deploymentTarget: '17.0'
     sources:
-      - path: Mendel/Mendel
+      - path: Mendel
         excludes:
-          - "**/AppState+*.swift"
-          - "**/RootView+*.swift"
-          - "**/TodayView+*.swift"
-          - "**/CoachView+*.swift"
+          - "Config/**"
+          - "Resources/**"
       - path: Assets.xcassets
     info:
       path: Mendel/Config/Info.plist
@@ -48,8 +46,8 @@ targets:
     platform: iOS
     deploymentTarget: '17.0'
     sources:
-      - path: Mendel/MendelWidget
-      - path: Mendel/Mendel/Shared/SharedRecommendation.swift
+      - path: MendelWidget
+      - path: Mendel/Shared/SharedRecommendation.swift
     info:
       path: Mendel/Config/MendelWidget-Info.plist
     entitlements:
