@@ -1,18 +1,23 @@
 import SwiftUI
 import SwiftData
 
-// MARK: - Coach Screen
+// MARK: - CoachView v2
+// Replaces CoachView.swift — adds paywall gate for non-unlocked users.
+// The free tier shows a teaser; the paywall sheet appears on tap.
 
 struct CoachView: View {
 
-    @Environment(AppState.self) private var appState
+    @Environment(AppState.self)         private var appState
+    @Environment(PurchaseManager.self)  private var store
+    @Environment(HealthKitManager.self) private var hk
     @Query private var sessions: [Session]
     @Query private var recoveryLogs: [RecoveryLog]
 
-    @State private var messages: [ChatMessage] = []
-    @State private var inputText = ""
-    @State private var isLoading = false
-    @State private var showChips = true
+    @State private var messages: [ChatMessage]   = []
+    @State private var inputText                  = ""
+    @State private var isLoading                  = false
+    @State private var showChips                  = true
+    @State private var showPaywall                = false
 
     private let claude = ClaudeService()
 
@@ -24,118 +29,133 @@ struct CoachView: View {
     ]
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
+        ZStack {
+            VStack(alignment: .leading, spacing: 0) {
 
-            // Header
-            VStack(alignment: .leading, spacing: 4) {
-                Text("coach")
-                    .font(MendelType.screenTitle())
-                    .foregroundStyle(MendelColors.ink)
-                Text("ask anything")
-                    .font(MendelType.caption())
-                    .foregroundStyle(MendelColors.inkSoft)
-            }
-            .padding(.horizontal, MendelSpacing.xl)
-            .padding(.top, 28)
-            .padding(.bottom, 16)
-
-            Rectangle()
-                .fill(MendelColors.inkFaint)
-                .frame(height: 0.5)
-
-            // Messages
-            ScrollViewReader { proxy in
-                ScrollView {
-                    VStack(alignment: .leading, spacing: 16) {
-
-                        // Greeting
-                        if messages.isEmpty {
-                            GreetingBubble(appState: appState, summary: appState.weeklySummary)
+                // Header
+                VStack(alignment: .leading, spacing: 4) {
+                    HStack {
+                        Text("coach")
+                            .font(MendelType.screenTitle())
+                            .foregroundStyle(MendelColors.ink)
+                        Spacer()
+                        if !store.isUnlocked {
+                            UnlockBadge { showPaywall = true }
                         }
-
-                        ForEach(messages) { msg in
-                            MessageBubble(message: msg)
-                                .id(msg.id)
-                        }
-
-                        if isLoading {
-                            LoadingBubble()
-                                .id("loading")
-                        }
-
-                        Spacer().frame(height: 8).id("bottom")
                     }
-                    .padding(.horizontal, MendelSpacing.xl)
-                    .padding(.top, 20)
+                    Text("ask anything")
+                        .font(MendelType.caption())
+                        .foregroundStyle(MendelColors.inkSoft)
                 }
-                .scrollIndicators(.hidden)
-                .onChange(of: messages.count) {
-                    withAnimation { proxy.scrollTo("bottom", anchor: .bottom) }
-                }
-                .onChange(of: isLoading) {
-                    withAnimation { proxy.scrollTo("bottom", anchor: .bottom) }
-                }
-            }
+                .padding(.horizontal, MendelSpacing.xl)
+                .padding(.top, 28)
+                .padding(.bottom, 16)
 
-            // Prompt chips
-            if showChips {
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(spacing: 8) {
-                        ForEach(chips, id: \.self) { chip in
-                            ChipButton(text: chip) {
-                                send(text: chip)
+                Rectangle().fill(MendelColors.inkFaint).frame(height: 0.5)
+
+                // Messages
+                ScrollViewReader { proxy in
+                    ScrollView {
+                        VStack(alignment: .leading, spacing: 16) {
+                            if messages.isEmpty {
+                                GreetingBubble(appState: appState, summary: appState.weeklySummary)
+                            }
+                            ForEach(messages) { msg in
+                                MessageBubble(message: msg).id(msg.id)
+                            }
+                            if isLoading { LoadingBubble().id("loading") }
+                            Spacer().frame(height: 8).id("bottom")
+                        }
+                        .padding(.horizontal, MendelSpacing.xl)
+                        .padding(.top, 20)
+                    }
+                    .scrollIndicators(.hidden)
+                    .onChange(of: messages.count) {
+                        withAnimation { proxy.scrollTo("bottom", anchor: .bottom) }
+                    }
+                }
+
+                // Chips
+                if showChips {
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: 8) {
+                            ForEach(chips, id: \.self) { chip in
+                                ChipButton(text: chip) {
+                                    if store.isUnlocked {
+                                        send(text: chip)
+                                    } else {
+                                        showPaywall = true
+                                    }
+                                }
                             }
                         }
+                        .padding(.horizontal, MendelSpacing.xl)
+                        .padding(.vertical, 12)
                     }
-                    .padding(.horizontal, MendelSpacing.xl)
-                    .padding(.vertical, 12)
+                    .background(MendelColors.bg)
                 }
+
+                Rectangle().fill(MendelColors.inkFaint).frame(height: 0.5)
+
+                // Input
+                HStack(spacing: 10) {
+                    TextField("ask something…", text: $inputText, axis: .vertical)
+                        .font(MendelType.body())
+                        .foregroundStyle(MendelColors.ink)
+                        .lineLimit(1...4)
+                        .padding(.horizontal, 14)
+                        .padding(.vertical, 10)
+                        .background(MendelColors.inkFaint.opacity(0.5), in: Capsule())
+                        .onSubmit {
+                            if !inputText.isEmpty {
+                                store.isUnlocked ? send(text: inputText) : (showPaywall = true)
+                            }
+                        }
+
+                    Button {
+                        if !inputText.isEmpty {
+                            store.isUnlocked ? send(text: inputText) : (showPaywall = true)
+                        }
+                    } label: {
+                        ZStack {
+                            Circle()
+                                .fill(inputText.isEmpty ? MendelColors.inkFaint : MendelColors.ink)
+                                .frame(width: 36, height: 36)
+                            Image(systemName: "arrow.up")
+                                .font(.system(size: 13, weight: .semibold))
+                                .foregroundStyle(inputText.isEmpty ? MendelColors.inkSoft : MendelColors.bg)
+                        }
+                    }
+                    .buttonStyle(.plain)
+                    .disabled(inputText.isEmpty || isLoading)
+                }
+                .padding(.horizontal, MendelSpacing.xl)
+                .padding(.vertical, 12)
+                .padding(.bottom, 100)
                 .background(MendelColors.bg)
             }
-
-            // Input row
-            Rectangle()
-                .fill(MendelColors.inkFaint)
-                .frame(height: 0.5)
-
-            HStack(spacing: 10) {
-                TextField("ask something…", text: $inputText, axis: .vertical)
-                    .font(MendelType.body())
-                    .foregroundStyle(MendelColors.ink)
-                    .lineLimit(1...4)
-                    .padding(.horizontal, 14)
-                    .padding(.vertical, 10)
-                    .background(MendelColors.inkFaint.opacity(0.5), in: Capsule())
-                    .onSubmit { if !inputText.isEmpty { send(text: inputText) } }
-
-                Button {
-                    if !inputText.isEmpty { send(text: inputText) }
-                } label: {
-                    ZStack {
-                        Circle()
-                            .fill(inputText.isEmpty ? MendelColors.inkFaint : MendelColors.ink)
-                            .frame(width: 36, height: 36)
-                        Image(systemName: "arrow.up")
-                            .font(.system(size: 13, weight: .semibold))
-                            .foregroundStyle(inputText.isEmpty ? MendelColors.inkSoft : MendelColors.bg)
-                    }
-                }
-                .buttonStyle(.plain)
-                .disabled(inputText.isEmpty || isLoading)
-            }
-            .padding(.horizontal, MendelSpacing.xl)
-            .padding(.vertical, 12)
-            .padding(.bottom, 100) // tab bar
             .background(MendelColors.bg)
+
+            // Soft paywall blur overlay if locked (shows teaser, not hard block)
+            if !store.isUnlocked {
+                VStack {
+                    Spacer()
+                    PaywallTeaser { showPaywall = true }
+                        .padding(.horizontal, MendelSpacing.xl)
+                        .padding(.bottom, 120)
+                }
+            }
         }
-        .background(MendelColors.bg)
+        .sheet(isPresented: $showPaywall) {
+            PaywallView()
+                .environment(store)
+        }
     }
 
     // MARK: - Send
 
     private func send(text: String) {
         guard !text.isEmpty, !isLoading else { return }
-
         let userMsg = ChatMessage(role: "user", text: text)
         messages.append(userMsg)
         inputText = ""
@@ -144,9 +164,7 @@ struct CoachView: View {
 
         Task {
             do {
-                let history = messages.map {
-                    ClaudeService.Message(role: $0.role, content: $0.text)
-                }
+                let history = messages.map { ClaudeService.Message(role: $0.role, content: $0.text) }
                 let ctx = buildContext()
                 let reply = try await claude.send(messages: history, context: ctx)
                 await MainActor.run {
@@ -155,10 +173,7 @@ struct CoachView: View {
                 }
             } catch {
                 await MainActor.run {
-                    messages.append(ChatMessage(
-                        role: "assistant",
-                        text: "couldn't reach the coach right now. check your connection."
-                    ))
+                    messages.append(ChatMessage(role: "assistant", text: "couldn't reach the coach right now. check your connection."))
                     isLoading = false
                 }
             }
@@ -169,26 +184,84 @@ struct CoachView: View {
         let s  = appState.weeklySummary
         let lr = recoveryLogs.sorted { $0.date > $1.date }.first
         return CoachContext(
-            todayState:       appState.recommendation.state.rawValue.lowercased(),
-            weeklyLoad:       s.totalLoadScore,
-            strengthSessions: s.strengthSessions,
-            enduranceSessions:s.enduranceSessions,
-            soreness:         lr?.soreness.rawValue ?? "unknown",
-            sleepQuality:     lr?.sleepQuality.rawValue ?? "unknown"
+            todayState:        appState.recommendation.state.rawValue.lowercased(),
+            weeklyLoad:        s.totalLoadScore,
+            strengthSessions:  s.strengthSessions,
+            enduranceSessions: s.enduranceSessions,
+            soreness:          lr?.soreness.rawValue ?? "unknown",
+            sleepQuality:      lr?.sleepQuality.rawValue ?? "unknown"
         )
     }
 }
 
-// MARK: - Chat Message Model
+// MARK: - Paywall Teaser (soft prompt at bottom of coach when locked)
+
+private struct PaywallTeaser: View {
+    let onTap: () -> Void
+
+    var body: some View {
+        Button(action: onTap) {
+            HStack(spacing: 14) {
+                Image(systemName: "lock")
+                    .font(.system(size: 14, weight: .light))
+                    .foregroundStyle(MendelColors.stone)
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("unlock coach")
+                        .font(MendelType.bodyMedium())
+                        .foregroundStyle(MendelColors.ink)
+                    Text("one-time purchase. no subscription.")
+                        .font(MendelType.caption())
+                        .foregroundStyle(MendelColors.inkSoft)
+                }
+                Spacer()
+                Image(systemName: "chevron.right")
+                    .font(.system(size: 12, weight: .medium))
+                    .foregroundStyle(MendelColors.inkFaint)
+            }
+            .padding(16)
+            .background(MendelColors.white, in: RoundedRectangle(cornerRadius: MendelRadius.md))
+            .overlay(
+                RoundedRectangle(cornerRadius: MendelRadius.md)
+                    .stroke(MendelColors.inkFaint, lineWidth: 0.5)
+            )
+        }
+        .buttonStyle(.plain)
+    }
+}
+
+// MARK: - Unlock Badge (top right of Coach header)
+
+private struct UnlockBadge: View {
+    let onTap: () -> Void
+
+    var body: some View {
+        Button(action: onTap) {
+            HStack(spacing: 5) {
+                Image(systemName: "lock")
+                    .font(.system(size: 10, weight: .medium))
+                Text("unlock")
+                    .font(MendelType.label())
+                    .tracking(0.3)
+            }
+            .foregroundStyle(MendelColors.stone)
+            .padding(.horizontal, 12)
+            .padding(.vertical, 6)
+            .background(
+                Capsule().stroke(MendelColors.stone.opacity(0.4), lineWidth: 0.5)
+            )
+        }
+        .buttonStyle(.plain)
+    }
+}
+
+// MARK: - Shared Chat Components (kept here to avoid duplicate in CoachView.swift)
 
 struct ChatMessage: Identifiable {
-    let id = UUID()
+    let id   = UUID()
     let role: String
     let text: String
     var isUser: Bool { role == "user" }
 }
-
-// MARK: - Bubble Views
 
 struct GreetingBubble: View {
     let appState: AppState
@@ -198,14 +271,14 @@ struct GreetingBubble: View {
         let s = summary.strengthSessions
         let e = summary.enduranceSessions
         if s == 0 && e == 0 {
-            return "no sessions logged yet. log your first session and I'll give you personalised advice."
+            return "no sessions logged yet. log your first session and i'll give you personalised advice."
         }
-        return "you've done \(s) strength and \(e) endurance session\(e == 1 ? "" : "s") this week. today's recommendation: \(appState.recommendation.state.rawValue.lowercased()). what do you want to know?"
+        return "you've done \(s) strength and \(e) endurance session\(e == 1 ? "" : "s") this week. today: \(appState.recommendation.state.rawValue.lowercased()). what do you want to know?"
     }
 
     var body: some View {
         VStack(alignment: .leading, spacing: 6) {
-            Text("Mendel".uppercased())
+            Text("MENDEL")
                 .font(MendelType.label())
                 .foregroundStyle(MendelColors.inkSoft)
                 .tracking(0.8)
@@ -217,10 +290,7 @@ struct GreetingBubble: View {
                 .background(
                     RoundedRectangle(cornerRadius: 18)
                         .fill(MendelColors.white)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 18)
-                                .stroke(MendelColors.inkFaint, lineWidth: 0.5)
-                        )
+                        .overlay(RoundedRectangle(cornerRadius: 18).stroke(MendelColors.inkFaint, lineWidth: 0.5))
                 )
         }
     }
@@ -234,7 +304,7 @@ struct MessageBubble: View {
             if message.isUser { Spacer(minLength: 60) }
             VStack(alignment: message.isUser ? .trailing : .leading, spacing: 6) {
                 if !message.isUser {
-                    Text("Mendel".uppercased())
+                    Text("MENDEL")
                         .font(MendelType.label())
                         .foregroundStyle(MendelColors.inkSoft)
                         .tracking(0.8)
@@ -247,15 +317,11 @@ struct MessageBubble: View {
                     .background(
                         Group {
                             if message.isUser {
-                                RoundedRectangle(cornerRadius: 18)
-                                    .fill(MendelColors.ink)
+                                RoundedRectangle(cornerRadius: 18).fill(MendelColors.ink)
                             } else {
                                 RoundedRectangle(cornerRadius: 18)
                                     .fill(MendelColors.white)
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 18)
-                                            .stroke(MendelColors.inkFaint, lineWidth: 0.5)
-                                    )
+                                    .overlay(RoundedRectangle(cornerRadius: 18).stroke(MendelColors.inkFaint, lineWidth: 0.5))
                             }
                         }
                     )
@@ -276,7 +342,6 @@ struct LoadingBubble: View {
                     .fill(MendelColors.inkSoft)
                     .frame(width: 6, height: 6)
                     .opacity(phase == i ? 1 : 0.3)
-                    .animation(.easeInOut(duration: 0.4).repeatForever().delay(Double(i) * 0.15), value: phase)
             }
         }
         .padding(14)
@@ -287,9 +352,8 @@ struct LoadingBubble: View {
         )
         .frame(maxWidth: .infinity, alignment: .leading)
         .onAppear {
-            withAnimation { phase = 1 }
             Timer.scheduledTimer(withTimeInterval: 0.4, repeats: true) { _ in
-                phase = (phase + 1) % 3
+                withAnimation { phase = (phase + 1) % 3 }
             }
         }
     }

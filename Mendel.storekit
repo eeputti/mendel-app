@@ -1,0 +1,33 @@
+{
+  "identifier" : "A2C56B7A-9B4C-4F5F-BE4A-04FC67D90101",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+    {
+      "displayPrice" : "14.99",
+      "familyShareable" : false,
+      "internalID" : "D3E4A8BA-5E2A-4F6A-8DB0-418A9C3FE1A3",
+      "localizations" : [
+        {
+          "description" : "Unlock full Mendel coaching features.",
+          "displayName" : "Mendel Unlock",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.dipworks.mendel.unlock",
+      "referenceName" : "Mendel Unlock",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+    "_applicationInternalID" : "A0AAAE8F"
+  },
+  "subscriptionGroups" : [
+
+  ],
+  "version" : {
+    "major" : 3,
+    "minor" : 0
+  }
+}
