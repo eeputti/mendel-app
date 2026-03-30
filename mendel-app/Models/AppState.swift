@@ -1,8 +1,4 @@
 import SwiftUI
-import SwiftData
-
-// MARK: - AppState v2
-// Drop-in replacement for AppState.swift — adds HealthKit + purchase awareness.
 
 @Observable
 final class AppState {
@@ -27,11 +23,6 @@ final class AppState {
         enduranceBalance:  0
     )
 
-    // HealthKit prompt dismissed
-    var healthPromptDismissed: Bool = false
-
-    // MARK: - Refresh (called from RootView on data change)
-
     func refresh(
         sessions: [Session],
         recoveryLogs: [RecoveryLog],
@@ -48,6 +39,7 @@ final class AppState {
         )
 
         weeklySummary = WeeklySummary.compute(sessions: sessions)
+        syncWidget()
     }
 }
 

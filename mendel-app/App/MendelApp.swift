@@ -1,8 +1,6 @@
 import SwiftUI
 import SwiftData
-
-// MARK: - MendelApp v3
-// Replaces MendelApp.swift — registers notification delegate.
+import UserNotifications
 
 @main
 struct MendelApp: App {
