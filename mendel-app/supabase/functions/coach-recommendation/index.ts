@@ -1,0 +1,110 @@
+const corsHeaders = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
+  "Content-Type": "application/json",
+};
+
+const openAIKey = Deno.env.get("OPENAI_API_KEY");
+
+Deno.serve(async (request) => {
+  if (request.method === "OPTIONS") {
+    return new Response("ok", { headers: corsHeaders });
+  }
+
+  if (request.method !== "POST") {
+    return jsonResponse({ error: "Method not allowed" }, 405);
+  }
+
+  if (!openAIKey) {
+    return jsonResponse({ error: "Missing OPENAI_API_KEY" }, 500);
+  }
+
+  try {
+    const trainingContext = await request.json();
+
+    const openAIResponse = await fetch("https://api.openai.com/v1/responses", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${openAIKey}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        model: "gpt-5.4-mini",
+        input: [
+          {
+            role: "system",
+            content: [
+              {
+                type: "input_text",
+                text:
+                  "You are a minimalist hybrid athlete coach.\nReturn JSON with:\n- status (train / easy / recover)\n- headline\n- reason\n- recommended_session\n- caution\nKeep it short.",
+              },
+            ],
+          },
+          {
+            role: "user",
+            content: [
+              {
+                type: "input_text",
+                text: `Training context:\n${JSON.stringify(trainingContext)}`,
+              },
+            ],
+          },
+        ],
+        text: {
+          format: {
+            type: "json_schema",
+            name: "coach_recommendation",
+            strict: true,
+            schema: {
+              type: "object",
+              additionalProperties: false,
+              properties: {
+                status: {
+                  type: "string",
+                  enum: ["train", "easy", "recover"],
+                },
+                headline: { type: "string" },
+                reason: { type: "string" },
+                recommended_session: { type: "string" },
+                caution: { type: "string" },
+              },
+              required: [
+                "status",
+                "headline",
+                "reason",
+                "recommended_session",
+                "caution",
+              ],
+            },
+          },
+        },
+      }),
+    });
+
+    if (!openAIResponse.ok) {
+      return jsonResponse({ error: await openAIResponse.text() }, openAIResponse.status);
+    }
+
+    const payload = await openAIResponse.json();
+    const outputText = payload.output?.[0]?.content?.find((item: { type: string }) =>
+      item.type === "output_text"
+    )?.text;
+
+    if (!outputText) {
+      return jsonResponse({ error: "Missing structured output" }, 502);
+    }
+
+    return jsonResponse(JSON.parse(outputText), 200);
+  } catch (error) {
+    const message = error instanceof Error ? error.message : "Unknown error";
+    return jsonResponse({ error: message }, 500);
+  }
+});
+
+function jsonResponse(body: unknown, status: number) {
+  return new Response(JSON.stringify(body), {
+    status,
+    headers: corsHeaders,
+  });
+}

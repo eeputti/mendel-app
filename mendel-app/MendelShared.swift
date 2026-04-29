@@ -16,7 +16,7 @@ struct SharedRecommendation: Codable {
 
     static let placeholder = SharedRecommendation(
         state: "TRAIN",
-        context: "open mendel to get started",
+        context: AppStrings.Shared.placeholderContext,
         steps: ["log your first session", "get your recommendation"],
         updatedAt: .now
     )
